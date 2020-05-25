@@ -32,15 +32,13 @@ public class PostService {
   //      posts.add(post3);
         try {
             Class.forName("org.postgresql.Driver");
-           Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/technicalblog"
-            , "postgres", "mamta#123");
+           Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/technicalblog", "postgres", "mamta#123");
            Statement statement = connection.createStatement();
          ResultSet rs = statement.executeQuery("SELECT * FROM posts");
          while (rs.next()){
              Post post = new Post();
              post.setTitle(rs.getString("title"));
              post.setBody(rs.getString("body"));
-
              posts.add(post);
          }
         } catch (ClassNotFoundException | SQLException e) {

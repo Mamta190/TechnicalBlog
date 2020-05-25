@@ -10,7 +10,7 @@ import java.util.Date;
 @Service
 public class PostService {
     public ArrayList<Post> getAllPosts(){
-        ArrayList<Post> posts = new ArrayList<>();
+        ArrayList<Post> posts2 = new ArrayList<>();
 
   //      Post post1 = new Post();
    //     post1.setTitle("Post 1");
@@ -35,17 +35,17 @@ public class PostService {
            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/technicalblog", "postgres", "mamta#123");
            Statement statement = connection.createStatement();
          ResultSet rs = statement.executeQuery("SELECT * FROM posts");
-         while (rs.next()){
+              while (rs.next()){
              Post post = new Post();
              post.setTitle(rs.getString("title"));
              post.setBody(rs.getString("body"));
-             posts.add(post);
+            posts.add(post);
          }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
 
-        return posts;
+        return posts2;
     }
     public ArrayList<Post> getOnePost() {
         ArrayList<Post> posts = new ArrayList<>();
